@@ -18,9 +18,9 @@ jobs:
           
       - name: Firebase
         run: |
-           npm install node
-           npm install -g firebase-tools
-           firebase login:ci
+           sudo npm install node
+           sudo npm install -g firebase-tools
+           sudo firebase login:ci
            
       - run: flutter pub get
       - run: flutter analyze
