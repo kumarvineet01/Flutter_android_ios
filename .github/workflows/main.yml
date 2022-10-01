@@ -25,6 +25,9 @@ jobs:
           
       - name: Check_file & Path
         run: ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
+        
+      - name: Firebase
+        run: firebase login:ci
       
       - name: Push to Releases
         uses: ncipollo/release-action@v1
