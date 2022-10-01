@@ -15,6 +15,13 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '3.3.3'
+          
+      - name: Firebase
+        run: |
+           npm install node
+           npm install -g firebase-tools
+           firebase login:ci
+           
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
@@ -26,11 +33,11 @@ jobs:
       - name: Check_file & Path
         run: ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
         
-      - name: Firebase
-        run: |
-           nvm install node
-           npm install -g firebase-tools
-           firebase login:ci
+#       - name: Firebase
+#         run: |
+#            npm install node
+#            npm install -g firebase-tools
+#            firebase login:ci
       
       - name: Push to Releases
         uses: ncipollo/release-action@v1
