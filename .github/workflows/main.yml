@@ -21,7 +21,7 @@ jobs:
       - run: flutter build apk
       
       - name: Check_file & Path
-        run: pwd && ls -l  
+        run: pwd && ls -la  
           
       - name: Check_file & Path
         run: ls -l build/ios/iphoneos && pwd
