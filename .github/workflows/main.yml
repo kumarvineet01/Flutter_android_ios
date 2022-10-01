@@ -60,7 +60,7 @@ jobs:
         with:
          appName: kumarvineet011/Flutter_android_ios
          token: ${{secrets.APP_CENTER_TOKEN}}
-         group: test
+         #group: test
          file: build/app/outputs/flutter-apk/app-release.apk
          notifyTesters: true
          debug: false
