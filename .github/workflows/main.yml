@@ -20,7 +20,7 @@ jobs:
         run: |
            npm firebase
           # npm install firebase-cli
-           firebase login:ci
+          #firebase login:ci
            
 #       - run: flutter pub get
 #       - run: flutter analyze
