@@ -16,12 +16,12 @@ jobs:
         with:
           flutter-version: '3.3.3'
           
-      - name: Firebase
-        run: |
-           npm install -g firebase-tools
-           firebase --version
-          # npm install firebase-cli
-          #firebase login:ci
+#       - name: Firebase
+#         run: |
+#            npm install -g firebase-tools
+#            firebase --version
+#           # npm install firebase-cli
+#           #firebase login:ci
            
       - run: flutter pub get
       - run: flutter analyze
