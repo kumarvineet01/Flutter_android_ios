@@ -32,7 +32,12 @@ jobs:
 #         run: pwd && ls -la  
           
       - name: Check_file & Path
-        run: ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
+        #run: ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
+        run: |
+          ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
+          git config --global --add safe.directory /github/workspace
+        
+        
       
       - name: Push to Releases
         uses: ncipollo/release-action@v1
