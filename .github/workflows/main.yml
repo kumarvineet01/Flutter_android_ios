@@ -18,7 +18,8 @@ jobs:
           
       - name: Firebase
         run: |
-           npm firebase
+           npm install -g firebase-tools
+           firebase --version
           # npm install firebase-cli
           #firebase login:ci
            
