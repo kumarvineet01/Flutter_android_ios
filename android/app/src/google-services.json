@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "708336516935",
+    "project_id": "flutter-android-afba3",
+    "storage_bucket": "flutter-android-afba3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708336516935:android:5c3c21ecc1d349c8231662",
+        "android_client_info": {
+          "package_name": "com.gatalk.gatalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708336516935-7epgg4n7ut39n7269r87a3dhamtl2usr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTMYgTk2P8qc7RGGVcm5r1PzFjuuTc9vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708336516935-7epgg4n7ut39n7269r87a3dhamtl2usr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
