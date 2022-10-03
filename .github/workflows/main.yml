@@ -38,6 +38,7 @@ jobs:
         run: |
           ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
           git config --global --add safe.directory /github/workspace
+          export GOOGLE_APPLICATION_CREDENTIALS='/path/service_account.json'
         
         
       
