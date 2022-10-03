@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - develop
+      - main
 name: "Build and Release"
 jobs:
   build:
@@ -14,21 +14,64 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: stable
+          flutter-version: '3.3.3'
+          
+#       - name: Firebase
+#         run: |
+#            npm install -g firebase-tools
+#            firebase --version
+#           # npm install firebase-cli
+#           #firebase login:ci
+      - name: Fix git safe.directory in container
+        run: mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
+           
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
       - run: flutter build apk
+      
+#       - name: Check_file & Path
+#         run: pwd && ls -la  
+          
+      - name: Check_file & Path
+        #run: ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
+        run: |
+          ls -la build/app/outputs/flutter-apk/app-release.apk && pwd
+          git config --global --add safe.directory /github/workspace
+        
+        
+      
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*"
           tag: v1.0.${{github.run_number}}
-          token: ${{secrets.TOKEN}}
-      - name: Push to firebase app distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+          token: ${{secrets.GITHUB}}
+          
+          
+#       - name: Push to firebase app distribution
+#         uses: wzieba/Firebase-Distribution-Github-Action@v1
+#         with:
+#           appId: ${{secrets.FIREBASE_APP_ID}}
+#           token: ${{secrets.FIREBASE_TOKEN}}
+#           groups: testers
+#           file: build/app/outputs/apk/release/app-release.apk
+          
+      - name: Firebase App Distribution Action
+        uses: hasretsariyer/firebase-app-distribution-github-action@v1.0
         with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          token: ${{secrets.FIREBASE_TOKEN}}
-          group: testers
-          file: build/app/outputs/apk/release/app-release.apk
+         app_id: ${{secrets.FIREBASE_APP_ID}}
+         app_file: build/app/outputs/apk/release/app-release.apk
+         firebase_token: ${{secrets.FIREBASE_TOKEN}}
+         tester_groups: testers
+         #release_notes: # optional
+
+#       - name: App Center
+#         uses: wzieba/AppCenter-Github-Action@v1.3.3
+#         with:
+#          appName: kumarvineet011/Flutter_android_ios
+#          token: ${{secrets.APP_CENTER_TOKEN}}
+#          group: test
+#          file: build/app/outputs/flutter-apk/app-release.apk
+#          notifyTesters: true
+#          debug: false
