@@ -22,6 +22,8 @@ jobs:
 #            firebase --version
 #           # npm install firebase-cli
 #           #firebase login:ci
+      - name: Fix git safe.directory in container
+        run: mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
            
       - run: flutter pub get
       - run: flutter analyze
